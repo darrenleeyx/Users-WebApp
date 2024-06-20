@@ -1,4 +1,5 @@
-import { Link, Navigate, useLoaderData } from "react-router-dom";
+import React from "react";
+import { Link, useLoaderData } from "react-router-dom";
 import { getUsers } from "../api/users";
 import UserCard from "../components/UserCard";
 
@@ -7,10 +8,10 @@ function UserList() {
 
   return users.data.map((user) => {
     return (
-      <>
-        <UserCard key={user.id} {...user} />
+      <React.Fragment key={user.id}>
+        <UserCard {...user} />
         <Link to={user.id.toString()}>View</Link>
-      </>
+      </React.Fragment>
     );
   });
 }
